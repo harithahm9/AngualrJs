@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body" id="modal-body" ng-form="studentForm">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group" ng-class="{'has-error':studentForm.studentRollno.$invalid,'has-success':studentForm.studentRollno.$valid}" >
+
+                <label for="">Student Roll No</label>
+                <input type="text" name="studentRollno" class="form-control" ng-model="smc.student.rollno" 
+                ng-required="true" ng-minlength="5" ng-maxlength="8" ng-pattern="/^\d+$/"> 
+                <div class="small text-danger" ng-messages="studentForm.studentRollno.$error">
+                    <div ng-message="required">Student RollNo is Required</div>
+                    <div ng-message="minlength">Minimum 5 Charcters required</div>
+                    <div ng-message="maxlength">Maximum 8 Charcters allowed</div>
+                    <div ng-message="pattern ">Only num allowed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student Name</label>
+                <input type="text" name="studentName" class="form-control" ng-model="smc.student.name" 
+                ng-required="true">
+                <div class="help-block text-danger" ng-show="studentForm.studentName.$error.required">Student Name is Required</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student English Marks</label>
+                <input type="text" class="form-control" ng-model="smc.student.marks.english">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student French Marks</label>
+                <input type="text" class="form-control" ng-model="smc.student.marks.french">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student Japanese Marks</label>
+                <input type="text" class="form-control" ng-model="smc.student.marks.japanese">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student Germen Marks</label>
+                <input type="text" class="form-control" ng-model="smc.student.marks.germen">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="">Student Spanish Marks</label>
+                <input type="text" class="form-control" ng-model="smc.student.marks.spanish">
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="smc.ok()" ng-disabled="studentForm.$invalid">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="smc.cancel()">Cancel</button>
+</div>

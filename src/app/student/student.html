@@ -1,0 +1,75 @@
+<div class="container" id="studentpage">
+  <h1>Student table</h1>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="student.search">
+        
+         </div>
+
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group" ng-init="student.sorter=''"> 
+        <select class="form-control" name="" id="" ng-model="student.sorter">
+          <option value="">Sort By Feild</option>
+          <option value="rank">Rank ASC</option>
+           <option value="-rank">Rank DESC</option>
+            <option value="name">Name ASC</option>
+           <option value="-name">Name DESC</option>
+
+        </select>
+
+      </div>
+
+    </div>
+    <div class="col-sm-2">
+       <button class="btn btn-primary pull-right" ng-click="student.openModal()">Create Student</button>
+
+    </div>
+
+
+     </div>
+ 
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="2">S.no</th>
+        <th rowspan="2">Roll no</th>
+        <th rowspan="2">Name</th>
+        <th colspan="5" class="text-center">Marks</th>
+        <th rowspan="2">Total</th>
+        <th rowspan="2">Rank</th>
+        <th rowspan="2"></th>
+      </tr>
+      <tr>
+
+        <th>English</th>
+        <th>French</th>
+        <th>Japanese</th>
+        <th>Germen</th>
+        <th>Spanish</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="data in student.students | filter:student.search | orderBy:student.sorter">
+        <td>{{$index+1}}</td>
+        <td>{{data.rollno}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.marks.english}}</td>
+        <td>{{data.marks.french}}</td>
+        <td>{{data.marks.japanese}}</td>
+        <td>{{data.marks.germen}}</td>
+        <td>{{data.marks.spanish}}</td>
+        <td>{{data.total}}</td>
+        <td>{{data.rank}}</td>
+        <td>
+          <button class="btn btn-warning" tooltip-placement="bottom" uib-tooltip="updatestd" ng-click="student.openModal(data)">Update</button>
+          <button class="btn btn-danger" ng-click="student.remove(data)" >Delete</button>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
